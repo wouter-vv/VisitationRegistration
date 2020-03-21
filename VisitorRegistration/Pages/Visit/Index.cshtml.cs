@@ -33,6 +33,8 @@ namespace VisitorRegistration
         // more details see https://aka.ms/RazorPagesCRUD.
         public async Task<IActionResult> OnPostAsync()
         {
+
+            ViewData["VisitTypes"] = new SelectList(_context.VisitTypes, "Id", "Type");
             if (!ModelState.IsValid)
             {
                 return Page();
@@ -41,7 +43,7 @@ namespace VisitorRegistration
             Person person = _context.Persons.FirstOrDefault(x => x.FirstName == Visitation.Person.FirstName && x.LastName == Visitation.Person.LastName);
             if(person == null)
             {
-                _context.Persons.Add(new Person { FirstName = Visitation.Person.FirstName, LastName = Visitation.Person.LastName });
+                _context.Persons.Add(new Person { FirstName = Visitation.Person.FirstName, LastName = Visitation.Person.LastName, Company = Visitation.Person.Company, LicencePlate = Visitation.Person.LicencePlate });
                 await _context.SaveChangesAsync();
 
                 person = _context.Persons.FirstOrDefault(x => x.FirstName == Visitation.Person.FirstName && x.LastName == Visitation.Person.LastName);
@@ -58,7 +60,7 @@ namespace VisitorRegistration
 
             };
 
-
+            
 
             // persist to get newOrder.Id
 

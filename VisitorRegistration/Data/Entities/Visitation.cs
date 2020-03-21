@@ -11,11 +11,11 @@ namespace VisitorRegistration.Data.Entities
         public int Id { get; set; }
 
 
-        [Display(Name = "Check in moment")]
+        [Display(Name = "Moment van registratie")]
         [DisplayFormat(DataFormatString = "{0:HH:mm dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         public DateTime CheckInDateTime { get; set; }
 
-        [Display(Name = "Check out moment")]
+        [Display(Name = "moment van uitchecken")]
         [DisplayFormat(DataFormatString = "{0:HH:mm dd/MM/yyyy}", ApplyFormatInEditMode = false)]
         public DateTime CheckOutDateTime { get; set; }
 

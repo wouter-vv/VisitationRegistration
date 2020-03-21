@@ -8,6 +8,10 @@
         <form method="post">
             <div asp-validation-summary="ModelOnly" class="text-danger"></div>
             <div class="form-group">
+                <label asp-for="Visitation.VisitType.Type" class="control-label">Reden voor langskomen: </label>
+                <select asp-for="Visitation.VisitType.Id" class="form-control" asp-items="ViewBag.VisitTypes"></select>
+            </div>
+            <div class="form-group">
                 <label asp-for="Visitation.Person.FirstName" class="control-label"> Voornaam: </label>
                 <input asp-for="Visitation.Person.FirstName" class="form-control" />
                 <span asp-validation-for="Visitation.Person.FirstName" class="text-danger"></span>
@@ -17,11 +21,15 @@
                 <input asp-for="Visitation.Person.LastName" class="form-control" />
                 <span asp-validation-for="Visitation.Person.LastName" class="text-danger"></span>
             </div>
-
             <div class="form-group">
-                <label asp-for="Visitation.VisitType.Type" class="control-label">Reden voor langskomen: </label>
-                <select asp-for="Visitation.VisitType.Id" class="form-control" asp-items="ViewBag.VisitTypes"></select>
+                <label asp-for="Visitation.Person.Company" class="control-label">Bedrijf: </label>
+                <input asp-for="Visitation.Person.Company" class="form-control" />
             </div>
+            <div class="form-group">
+                <label asp-for="Visitation.Person.LicencePlate" class="control-label">Nummerplaat: </label>
+                <input asp-for="Visitation.Person.LicencePlate" class="form-control" />
+            </div>
+
             <div class="form-group">
                 <input type="submit" value="Create" class="btn btn-primary" />
             </div>
@@ -30,6 +38,6 @@
 </div>
 
 <div>
-    <a asp-page="Index">Back to List</a>
+    <a asp-page="/Welcome/Welcome">Terug naar het startscherm</a>
 </div>
 

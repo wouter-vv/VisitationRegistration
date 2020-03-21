@@ -161,3 +161,4 @@ C:\Users\wvandevelde\source\repos\VisitorRegistration\VisitorRegistration\obj\De
 C:\Users\wvandevelde\source\repos\VisitorRegistration\VisitorRegistration\obj\Debug\netcoreapp3.1\VisitorRegistration.csprojAssemblyReference.cache
 C:\Users\wvandevelde\source\repos\VisitorRegistration\VisitorRegistration\obj\Debug\netcoreapp3.1\Razor\Pages\Welcome\Welcome.cshtml.g.cs
 C:\Users\wvandevelde\source\repos\VisitorRegistration\VisitorRegistration\obj\Debug\netcoreapp3.1\Razor\Pages\Visit\Unregister.cshtml.g.cs
+C:\Users\wvandevelde\source\repos\VisitorRegistration\VisitorRegistration\obj\Debug\netcoreapp3.1\Razor\Pages\Overview\Overview.cshtml.g.cs

@@ -1,0 +1,57 @@
+﻿@page "/Overview"
+@model VisitorRegistration.OverviewModel
+
+@{
+    ViewData["Title"] = "Overview";
+    Layout = "~/Pages/Shared/_Layout.cshtml";
+}
+
+<h4>Overview</h4>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.visitations[0].Id)
+            </th>
+            <th class="d-none d-xl-table-cell">
+                @Html.DisplayNameFor(model => model.visitations[0].Person.FirstName)
+            </th>
+            <th class="d-none d-xl-table-cell">
+                @Html.DisplayNameFor(model => model.visitations[0].Person.LastName)
+            </th>
+            <th class="d-none d-xl-table-cell">
+                @Html.DisplayNameFor(model => model.visitations[0].VisitType.Type)
+            </th>
+            <th class="d-none d-xl-table-cell">
+                @Html.DisplayNameFor(model => model.visitations[0].CheckInDateTime)
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.visitations)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Id)
+            </td>
+            <td class="d-none d-xl-table-cell">
+                @Html.DisplayFor(modelItem => item.Person.FirstName)
+            </td>
+            <td class="d-none d-xl-table-cell">
+                @Html.DisplayFor(modelItem => item.Person.LastName)
+            </td>
+            <td class="d-none d-xl-table-cell">
+                @Html.DisplayFor(modelItem => item.VisitType.Type)
+            </td>
+            <td class="d-none d-xl-table-cell">
+                @Html.DisplayFor(modelItem => item.CheckInDateTime)
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>
+
+<div>
+    <a asp-page="/Welcome/Welcome">Back to home</a>
+</div>

@@ -6,17 +6,15 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h1>Unregister</h1>
-
-<h4>Visitation</h4>
+<h4>Afmelden</h4>
 <hr />
 <div class="row">
     <div class="col-md-4">
         <form method="post">
 
             <div class="form-group">
-                <label asp-for="Visitation.Person.Id" class="control-label">Wie bent u: </label>
-                <select asp-for="Visitation.Person.Id" class="form-control" asp-items="ViewBag.PersonsLoggedIn"></select>
+                <label asp-for="Visitation.Id" class="control-label">Wie bent u: </label>
+                <select asp-for="Visitation.Id" class="form-control" asp-items="ViewBag.PersonsLoggedIn"></select>
             </div>
             <div class="form-group">
                 <input type="submit" value="Save" class="btn btn-primary" />
@@ -26,6 +24,6 @@
 </div>
 
 <div>
-    <a asp-page="./Index">Back to List</a>
+    <a asp-page="/Welcome/Welcome">Terug naar het startscherm</a>
 </div>
 

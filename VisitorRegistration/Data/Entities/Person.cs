@@ -8,14 +8,14 @@ namespace VisitorRegistration.Data.Entities
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Voornaam")]
         public string FirstName { get; set; }
 
         [Required]
         [StringLength(100)]
+        [Display(Name = "Achternaam")]
         public string LastName { get; set; }
-        public string Email { get; set; }
-        public string PhoneNumber { get; set; }
-        public int? AddressId { get; set; }
-        public Address Address { get; set; }
+        public string Company { get; set; }
+        public string LicencePlate { get; set; }
     }
 }
