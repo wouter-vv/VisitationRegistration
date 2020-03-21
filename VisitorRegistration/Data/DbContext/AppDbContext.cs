@@ -1,6 +1,7 @@
 ﻿using System.Collections.Generic;
 using Microsoft.EntityFrameworkCore;
 using VisitorRegistration.Data.Entities;
+using VisitorRegistration.ViewModels;
 
 namespace VisitorRegistration.Data
 {
@@ -45,5 +46,7 @@ namespace VisitorRegistration.Data
                 },
             });
         }
+
+        public DbSet<VisitorRegistration.ViewModels.RegistrationFormViewModel> RegistrationFormViewModel { get; set; }
     }
 }
