@@ -30,13 +30,20 @@ namespace VisitorRegistration
 
         public async Task<IActionResult> OnGetAsync()
         {
-
-            visitationQuery = _context.Visitations
+            bool isAuthenticated = User.Identity.IsAuthenticated;
+            if (isAuthenticated)
+            {
+                visitationQuery = _context.Visitations
                 .Include(v => v.Person)
                 .Include(v => v.VisitType);
-            visitations = visitationQuery.Where(x => x.CheckOutDateTime > DateTime.Now).ToList();
+                visitations = visitationQuery.Where(x => x.CheckOutDateTime > DateTime.Now).ToList();
 
-            return Page();
+                return Page();
+            } else
+            {                
+                return RedirectToPage("/Account/Login");
+            }
+            
         }
     }
 }

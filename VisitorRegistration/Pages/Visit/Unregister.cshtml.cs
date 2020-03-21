@@ -76,7 +76,7 @@ namespace VisitorRegistration
                 }
             }
 
-            return RedirectToPage("./Index");
+            return RedirectToPage("/Welcome/Welcome");
         }
 
         private bool VisitationExists(int id)

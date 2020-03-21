@@ -1,11 +1,13 @@
 ﻿using System.Collections.Generic;
+using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using VisitorRegistration.Data.Entities;
 using VisitorRegistration.ViewModels;
 
 namespace VisitorRegistration.Data
 {
-    public class AppDbContext : DbContext
+    public class AppDbContext : IdentityDbContext<IdentityUser>
     {
         public AppDbContext(DbContextOptions<AppDbContext> options) : base(options)
         {
@@ -19,7 +21,7 @@ namespace VisitorRegistration.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
+            base.OnModelCreating(modelBuilder);
             SeedVisitTypes(modelBuilder);
 
         }
@@ -50,6 +52,5 @@ namespace VisitorRegistration.Data
             });
         }
 
-        public DbSet<VisitorRegistration.ViewModels.RegistrationFormViewModel> RegistrationFormViewModel { get; set; }
     }
 }
