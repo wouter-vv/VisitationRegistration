@@ -30,7 +30,7 @@ namespace VisitorRegistration
 
             services.AddRazorPages().AddRazorPagesOptions(options =>
             {
-                options.Conventions.AddPageRoute("/Visit/Index", "");
+                options.Conventions.AddPageRoute("/Welcome/Welcome", "");
             });
         }
 

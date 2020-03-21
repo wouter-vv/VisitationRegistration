@@ -1,0 +1,35 @@
+﻿@page 
+@model VisitorRegistration.IndexModel
+
+<h4>Visitation</h4>
+<hr />
+<div class="row justify-content-center">
+    <div class="col-md-8">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Visitation.Person.FirstName" class="control-label"> Voornaam: </label>
+                <input asp-for="Visitation.Person.FirstName" class="form-control" />
+                <span asp-validation-for="Visitation.Person.FirstName" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Visitation.Person.LastName" class="control-label">Achternaam: </label>
+                <input asp-for="Visitation.Person.LastName" class="form-control" />
+                <span asp-validation-for="Visitation.Person.LastName" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="Visitation.VisitType.Type" class="control-label">Reden voor langskomen: </label>
+                <select asp-for="Visitation.VisitType.Id" class="form-control" asp-items="ViewBag.VisitTypes"></select>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-primary" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+

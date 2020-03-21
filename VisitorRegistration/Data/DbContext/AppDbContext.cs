@@ -45,6 +45,10 @@ namespace VisitorRegistration.Data
                     Type = "Levering"
                 },
             });
+            modelBuilder.Entity<Person>(entity =>
+            {
+                entity.Property(e => e.Id).ValueGeneratedOnAdd();
+            });
         }
 
         public DbSet<VisitorRegistration.ViewModels.RegistrationFormViewModel> RegistrationFormViewModel { get; set; }
