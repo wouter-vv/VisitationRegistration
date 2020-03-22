@@ -6,48 +6,81 @@
     Layout = "~/Pages/Shared/_Layout.cshtml";
 }
 
-<h4>Overview</h4>
+<h4>Overzicht bezoekers</h4>
+
+<form method="post">
+    <div class="col-sm-4 dropdown">
+        <select asp-for="@Model.ShowDatePicker"
+                name="ShowDatePicker"
+                asp-items="@Model.testtest"
+                class="btn btn-secondary dropdown-toggle form-control" required>
+        </select>
+    </div>
+
+    <div id="SelectedDatePartial" class="d-none">
+        <hr class="mb-4">
+
+        <div class="form-group row">
+            <label asp-for="SelectedDate" class="col-sm-12" id="DeliveryOn">Kies een datum om de bezoekers te zien: </label>
+            <div class="col-sm-12 date">
+                <input type="text"
+                       asp-for="SelectedDate"
+                       name="SelectedDate"
+                       data-date-end-date="@DateTime.Now.Date"
+                       data-date-autoclose="true"
+                       data-date-default-view-date="@DateTime.Now.Date"
+                       data-date-format="dd/mm/yyyy"
+                       data-date-week-start="1"
+                       class="form-control" required />
+            </div>
+        </div>
+        <button class="btn btn-primary" style="margin-bottom:2rem;min-width:75px" type="submit">
+            Filter
+        </button>
+    </div>
+</form>
+
 
 <table class="table">
     <thead>
         <tr>
             <th>
-                @Html.DisplayNameFor(model => model.visitations[0].Id)
+                @Html.DisplayNameFor(model => model.Visitations[0].Id)
             </th>
             <th class="d-none d-xl-table-cell">
-                @Html.DisplayNameFor(model => model.visitations[0].Person.FirstName)
+                @Html.DisplayNameFor(model => model.Visitations[0].Person.FirstName)
             </th>
             <th class="d-none d-xl-table-cell">
-                @Html.DisplayNameFor(model => model.visitations[0].Person.LastName)
+                @Html.DisplayNameFor(model => model.Visitations[0].Person.LastName)
             </th>
             <th class="d-none d-xl-table-cell">
-                @Html.DisplayNameFor(model => model.visitations[0].VisitType.Type)
+                @Html.DisplayNameFor(model => model.Visitations[0].VisitType.Type)
             </th>
             <th class="d-none d-xl-table-cell">
-                @Html.DisplayNameFor(model => model.visitations[0].CheckInDateTime)
+                @Html.DisplayNameFor(model => model.Visitations[0].CheckInDateTime)
             </th>
         </tr>
     </thead>
     <tbody>
-        @foreach (var item in Model.visitations)
+        @foreach (var item in Model.Visitations)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Id)
-            </td>
-            <td class="d-none d-xl-table-cell">
-                @Html.DisplayFor(modelItem => item.Person.FirstName)
-            </td>
-            <td class="d-none d-xl-table-cell">
-                @Html.DisplayFor(modelItem => item.Person.LastName)
-            </td>
-            <td class="d-none d-xl-table-cell">
-                @Html.DisplayFor(modelItem => item.VisitType.Type)
-            </td>
-            <td class="d-none d-xl-table-cell">
-                @Html.DisplayFor(modelItem => item.CheckInDateTime)
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Id)
+                </td>
+                <td class="d-none d-xl-table-cell">
+                    @Html.DisplayFor(modelItem => item.Person.FirstName)
+                </td>
+                <td class="d-none d-xl-table-cell">
+                    @Html.DisplayFor(modelItem => item.Person.LastName)
+                </td>
+                <td class="d-none d-xl-table-cell">
+                    @Html.DisplayFor(modelItem => item.VisitType.Type)
+                </td>
+                <td class="d-none d-xl-table-cell">
+                    @Html.DisplayFor(modelItem => item.CheckInDateTime)
+                </td>
+            </tr>
         }
     </tbody>
 </table>
@@ -55,3 +88,5 @@
 <div>
     <a asp-page="/Welcome/Welcome">Back to home</a>
 </div>
+
+

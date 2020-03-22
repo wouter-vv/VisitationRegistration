@@ -5,10 +5,19 @@
 }
 
 
+@if (!User.Identity.IsAuthenticated)
+{
 
-<div class="row justify-content-center p-5">
-    <h1 class="p-3">Welcome Bij Meat &amp; More</h1>
-</div>
+    <div class="row justify-content-center p-5">
+        <h1 class="p-3">Welcome Bij Meat &amp; More</h1>
+    </div>
+}
+else
+{
+    <div class="row justify-content-center p-5">
+        <h1 class="p-3">Welcome Bij Meat &amp; More, @User.Identity.Name!</h1>
+    </div>
+}
 <div class="row justify-content-center">
     <div class="col-md-3">
         <a class="nav-link text-dark" asp-area="" asp-page="/Visit/Index"><button class="btn btn-primary col-md-12 p-4">Aanmelden</button></a>
@@ -17,12 +26,15 @@
         <a class="nav-link text-dark" asp-area="" asp-page="/Visit/Unregister"><button class="btn btn-primary col-md-12 p-4">Afmelden</button></a>
     </div>
 </div>
+@if (User.Identity.IsAuthenticated)
+{
 
-<div class="row justify-content-center">
-    <div class="col-m-2 pt-5">
-        <a class="nav-link text-dark" asp-area="" asp-page="/Overview/Overview"><button class="btn btn-primary col-md-12 p-2">Overzicht aanwezigen</button></a>
+    <div class="row justify-content-center">
+        <div class="col-m-2 pt-5">
+            <a class="nav-link text-dark" asp-area="" asp-page="/Overview/Overview"><button class="btn btn-primary col-md-12 p-2">Overzicht aanwezigen</button></a>
+        </div>
     </div>
-</div>
+}
 
 
 

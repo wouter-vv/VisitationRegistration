@@ -14,7 +14,6 @@ namespace VisitorRegistration.Data
 
         }
 
-        public DbSet<User> Users { get; set; }
         public DbSet<Person> Persons { get; set; }
         public DbSet<Visitation> Visitations { get; set; }
         public DbSet<VisitType> VisitTypes { get; set; }
