@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.Mvc.Rendering;
@@ -12,6 +13,7 @@ using VisitorRegistration.Data.Entities;
 
 namespace VisitorRegistration
 {
+    [Authorize]
     public class OverviewModel : PageModel
     {
         private readonly VisitorRegistration.Data.AppDbContext _context;
