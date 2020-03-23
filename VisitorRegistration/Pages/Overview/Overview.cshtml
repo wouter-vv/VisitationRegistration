@@ -12,8 +12,8 @@
     <div class="col-sm-4 dropdown">
         <select asp-for="@Model.ShowDatePicker"
                 name="ShowDatePicker"
-                asp-items="@Model.testtest"
-                class="btn btn-secondary dropdown-toggle form-control" required>
+                asp-items="@Model.DateVisitorsSelectList"
+                class="btn btn-secondary dropdown-toggle form-control mb-3" required>
         </select>
     </div>
 
@@ -34,19 +34,16 @@
                        class="form-control" required />
             </div>
         </div>
-        <button class="btn btn-primary" style="margin-bottom:2rem;min-width:75px" type="submit">
-            Filter
-        </button>
     </div>
+    <button class="btn btn-primary" style="margin-bottom:2rem;min-width:75px" type="submit">
+        Filter
+    </button>
 </form>
 
 
 <table class="table">
     <thead>
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.Visitations[0].Id)
-            </th>
             <th class="d-none d-xl-table-cell">
                 @Html.DisplayNameFor(model => model.Visitations[0].Person.FirstName)
             </th>
@@ -57,30 +54,52 @@
                 @Html.DisplayNameFor(model => model.Visitations[0].VisitType.Type)
             </th>
             <th class="d-none d-xl-table-cell">
+                @Html.DisplayNameFor(model => model.Visitations[0].Person.LicencePlate)
+            </th>
+            <th class="d-none d-xl-table-cell">
+                @Html.DisplayNameFor(model => model.Visitations[0].Person.Company)
+            </th>
+            <th class="d-none d-xl-table-cell">
                 @Html.DisplayNameFor(model => model.Visitations[0].CheckInDateTime)
+            </th>
+            <th class="d-none d-xl-table-cell">
+                @Html.DisplayNameFor(model => model.Visitations[0].CheckOutDateTime)
             </th>
         </tr>
     </thead>
     <tbody>
         @foreach (var item in Model.Visitations)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Id)
-                </td>
-                <td class="d-none d-xl-table-cell">
-                    @Html.DisplayFor(modelItem => item.Person.FirstName)
-                </td>
-                <td class="d-none d-xl-table-cell">
-                    @Html.DisplayFor(modelItem => item.Person.LastName)
-                </td>
-                <td class="d-none d-xl-table-cell">
-                    @Html.DisplayFor(modelItem => item.VisitType.Type)
-                </td>
-                <td class="d-none d-xl-table-cell">
-                    @Html.DisplayFor(modelItem => item.CheckInDateTime)
-                </td>
-            </tr>
+        <tr>
+            <td class="d-none d-xl-table-cell">
+                @Html.DisplayFor(modelItem => item.Person.FirstName)
+            </td>
+            <td class="d-none d-xl-table-cell">
+                @Html.DisplayFor(modelItem => item.Person.LastName)
+            </td>
+            <td class="d-none d-xl-table-cell">
+                @Html.DisplayFor(modelItem => item.VisitType.Type)
+            </td>
+            <td class="d-none d-xl-table-cell">
+                @Html.DisplayFor(modelItem => item.Person.LicencePlate)
+            </td>
+            <td class="d-none d-xl-table-cell">
+                @Html.DisplayFor(modelItem => item.Person.Company)
+            </td>
+            <td class="d-none d-xl-table-cell">
+                @Html.DisplayFor(modelItem => item.CheckInDateTime)
+            </td>
+            <td class="d-none d-xl-table-cell">
+                @if (item.CheckOutDateTime < DateTime.Now)
+                {
+                    @Html.DisplayFor(modelItem => item.CheckOutDateTime)
+                }
+                else
+                {
+                    <text>---</text>;
+                }
+            </td>
+        </tr>
         }
     </tbody>
 </table>

@@ -32,7 +32,7 @@ namespace VisitorRegistration
         [BindProperty]
         public int? ShowDatePicker { get; set; }
 
-        public SelectList testtest { get; set; }
+        public SelectList DateVisitorsSelectList { get; set; }
 
         public OverviewModel(VisitorRegistration.Data.AppDbContext context)
         {
@@ -78,16 +78,16 @@ namespace VisitorRegistration
             bool isAuthenticated = User.Identity.IsAuthenticated;
             if (isAuthenticated)
             {
-                string[] temp = { "Current Visitors", "Pick a date" };
+                string[] temp = { "Huidige bezoekers", "Kies een datum" };
                 var test = temp.Select((r, index) => new SelectListItem { Text = index.ToString(), Value = r });
 
                 //var test = new SelectList(temp, "Id", "Value");
                 if (ShowDatePicker != null)
                 {
-                    testtest = new SelectList(test, "Text", "Value", ShowDatePicker);
+                    DateVisitorsSelectList = new SelectList(test, "Text", "Value", ShowDatePicker);
                 } else
                 {
-                    testtest = new SelectList(test, "Text", "Value");
+                    DateVisitorsSelectList = new SelectList(test, "Text", "Value");
                 }
                 if (ShowDatePicker == 1)
                 {

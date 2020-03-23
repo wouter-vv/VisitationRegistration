@@ -15,7 +15,7 @@ $('#ShowDatePicker').on('change',
     function (event) {
         var selectedDeliveryPoint = event.target.selectedOptions[0].textContent;
         var addressComponent = $('#SelectedDatePartial')[0];
-        if (selectedDeliveryPoint === 'Pick a date') {
+        if (selectedDeliveryPoint === 'Kies een datum') {
             addressComponent.classList.remove('d-none');
             addressComponent.classList.add('d-block');
         } else {
@@ -27,7 +27,7 @@ $('#ShowDatePicker').on('change',
 $(document).ready( function (event) {
     var selectedDeliveryPoint = $('#ShowDatePicker').selectedOptions[0].textContent;
         var addressComponent = $('#SelectedDatePartial')[0];
-        if (selectedDeliveryPoint === 'Pick a date') {
+    if (selectedDeliveryPoint === 'Kies een datum') {
             addressComponent.classList.remove('d-none');
             addressComponent.classList.add('d-block');
         } else {

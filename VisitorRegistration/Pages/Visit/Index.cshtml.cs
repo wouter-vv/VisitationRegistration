@@ -53,7 +53,7 @@ namespace VisitorRegistration
             var newVisitation = new Visitation
             {
                 CheckInDateTime = DateTime.Now,
-                CheckOutDateTime = DateTime.Now.AddHours(2),
+                CheckOutDateTime = DateTime.Now.AddHours(4),
                 Person = person,
                 PersonId = person.Id,
                 VisitTypeId = Visitation.VisitType.Id

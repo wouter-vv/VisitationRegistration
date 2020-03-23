@@ -3,7 +3,77 @@
 @{
     ViewData["Title"] = "Graph";
     Layout = "~/Pages/Shared/_Layout.cshtml";
+
 }
 
 <h1>Graph</h1>
 
+
+<form method="post">
+
+    <div id="SelectedDatePartial">
+        <hr class="mb-4">
+
+        <div class="form-group row">
+            <label asp-for="SelectedDate" class="col-sm-12" id="DeliveryOn">Kies een datum om de bezoekers te zien: </label>
+            <div class="col-sm-12 date">
+                <input type="text"
+                       asp-for="SelectedDate"
+                       name="SelectedDate"
+                       data-date-end-date="@DateTime.Now.Date"
+                       data-date-autoclose="true"
+                       data-date-default-view-date="@DateTime.Now.Date"
+                       data-date-format="dd/mm/yyyy"
+                       data-date-week-start="1"
+                       class="form-control" required />
+            </div>
+        </div>
+        <button class="btn btn-primary" style="margin-bottom:2rem;min-width:75px" type="submit">
+            Filter
+        </button>
+    </div>
+</form>
+
+<div id="chart"></div>
+
+@section Scripts
+{
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+
+    <script type="text/javascript">
+
+        var VisitorsPerHour = @JavaScriptConvert.SerializeObject(Model.TimeStayedEnumerable);
+        // Load the Visualization API and the corechart package.
+        google.charts.load('current', { 'packages': ['corechart'] });
+
+        // Set a callback to run when the Google Visualization API is loaded.
+        google.charts.setOnLoadCallback(drawChart);
+
+        // Callback that creates and populates a data table,
+        // instantiates the pie chart, passes in the data and
+        // draws it.
+        function drawChart() {
+            // Create the data table.
+            var data = new google.visualization.DataTable();
+            data.addColumn('string', 'Visitors');
+            data.addColumn('number', 'Time');
+            data.addRows([
+                ['0-1', VisitorsPerHour[3]],
+                ['1-2', VisitorsPerHour[2]],
+                ['2-3', VisitorsPerHour[1]],
+                ['3-4', VisitorsPerHour[0]]
+            ]);
+
+            // Set chart options
+            var options = {
+                'title': 'Aantal bezoekers / tijd',
+                'width': 600,
+                'height': 500
+            };
+
+            // Instantiate and draw our chart, passing in some options.
+            var chart = new google.visualization.ColumnChart(document.getElementById('chart'));
+            chart.draw(data, options);
+        }
+    </script>
+}
